@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A small browser arcade by Alexander Schubert. Play Snake, Pong, and Read the ECG."><meta name="theme-color" content="#ffffff">
+  <title>Arcade — Alexander Schubert</title>
+  <link rel="icon" href="assets/favicon.svg?v=a-2" type="image/svg+xml"><link rel="stylesheet" href="assets/style.css"><script src="assets/snake-core.js" defer></script><script src="assets/snake.js" defer></script><script src="assets/pong-core.js" defer></script><script src="assets/pong.js" defer></script><script src="assets/signal-core.js" defer></script><script src="assets/signal.js" defer></script>
+  <link rel="canonical" href="https://alexmschubert.github.io/arcade.html">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header wrap"><a class="brand-mark" href="index.html" aria-label="Alexander Schubert — Bio"><img src="assets/monogram.svg" alt="" width="44" height="44"></a>
+    <svg class="header-beat" viewBox="0 0 180 40" fill="none" aria-hidden="true" focusable="false"><path class="ecg-trace" pathLength="1" d="M2 24H32C36 24 36 19 40 19S44 24 48 24H65L70 29 77 7 84 34 90 24H110C116 24 117 14 125 14S135 24 142 24H178"/></svg><nav aria-label="Main navigation"><a href="index.html">Bio</a><a href="research.html">Research</a><a href="arcade.html" aria-current="page">Arcade</a></nav></header>
+  <main id="main" class="wrap arcade-page">
+    <section class="arcade-heading"><h1>Arcade</h1><nav class="arcade-jumps" aria-label="Games"><a href="#snake-title">Snake</a><a href="#pong-title">Pong</a><a href="#signal-title">Read the ECG</a></nav></section>
+    <section class="arcade-layout section-rule" aria-labelledby="snake-title">
+      <div class="game-info"><h2 id="snake-title">Snake</h2><dl class="game-instructions"><div><dt>Move</dt><dd>Arrow keys or WASD</dd></div><div><dt>Pause</dt><dd>Space</dd></div><div><dt>Touch</dt><dd>Direction buttons below</dd></div></dl></div>
+      <div class="game-cabinet">
+        <div class="scoreboard"><span class="cabinet-label"><span class="status-light" aria-hidden="true"></span> SNAKE</span><div><span>SCORE <strong id="score">00</strong></span><span>BEST <strong id="best">00</strong></span></div></div>
+        <div class="board-wrap"><canvas id="snake-board" width="600" height="600" tabindex="0" aria-label="Snake game board. Use arrow keys or W A S D to move, Space to pause. Press Tab to leave the game." aria-describedby="game-status">Your browser does not support this game’s canvas.</canvas><div class="game-overlay" id="game-overlay"><p id="overlay-title">Snake</p><button id="start-game" type="button">Play</button></div></div>
+        <div class="game-toolbar"><span id="game-status" role="status" aria-live="polite">Ready to play</span><div><button id="pause-game" type="button" disabled>Pause</button><button id="restart-game" type="button" disabled>Restart</button></div></div>
+        <div class="direction-pad" aria-label="Touch game controls"><button type="button" data-direction="up" aria-label="Move up">↑</button><button type="button" data-direction="left" aria-label="Move left">←</button><button type="button" data-direction="down" aria-label="Move down">↓</button><button type="button" data-direction="right" aria-label="Move right">→</button></div>
+        <noscript><p class="noscript-note">Enable JavaScript to play Snake. Bio and Research work without it.</p></noscript>
+      </div>
+    </section>
+    <section class="arcade-layout section-rule" aria-labelledby="pong-title">
+      <div class="game-info"><h2 id="pong-title">Pong</h2><p class="game-rule">First to 7.</p><dl class="game-instructions"><div><dt>Move</dt><dd>↑ / ↓ or W / S</dd></div><div><dt>Pause</dt><dd>Space</dd></div><div><dt>Touch / mouse</dt><dd>Drag or move on the court</dd></div></dl></div>
+      <div class="game-cabinet" id="pong-cabinet">
+        <div class="scoreboard"><span class="cabinet-label"><span class="status-light" aria-hidden="true"></span> PONG</span><div><span>YOU <strong id="pong-player-score">0</strong></span><span>CPU <strong id="pong-cpu-score">0</strong></span></div></div>
+        <div class="board-wrap"><canvas id="pong-board" width="720" height="480" tabindex="0" aria-label="Pong. Your paddle is on the left. Use up and down arrows or W and S, or move your pointer on the court. Space pauses. Press Tab to leave." aria-describedby="pong-status">Your browser does not support this game’s canvas.</canvas><div class="game-overlay" id="pong-overlay"><p id="pong-overlay-title">Pong</p><button id="pong-start" type="button">Play</button></div></div>
+        <div class="game-toolbar"><span id="pong-status" role="status" aria-live="polite">Ready to play</span><div><button id="pong-pause" type="button" disabled>Pause</button><button id="pong-restart" type="button" disabled>Restart</button></div></div>
+        <noscript><p class="noscript-note">Enable JavaScript to play Pong.</p></noscript>
+      </div>
+    </section>
+    <section class="arcade-layout section-rule" aria-labelledby="signal-title">
+      <div class="game-info signal-heading"><h2 id="signal-title">Read the ECG</h2><p class="game-rule">Choose the illustrated pattern.</p></div>
+      <div class="game-cabinet signal-cabinet" id="signal-cabinet">
+        <div class="scoreboard"><span class="cabinet-label">ECG <span id="signal-round">1 / 5</span></span><div><span>SCORE <strong id="signal-score">0 / 5</strong></span></div></div>
+        <div class="ecg-strip-scroll" tabindex="0" role="region" aria-label="ECG illustration. Scroll horizontally on a small screen."><canvas id="signal-board" width="900" height="320" role="img" aria-label="Schematic ECG pattern" aria-describedby="signal-status">Enable canvas support to view the waveform.</canvas></div>
+        <div class="ecg-answers" role="group" aria-label="Choose the ECG pattern">
+          <button type="button" data-answer="normal">Normal sinus rhythm</button><button type="button" data-answer="elevation">ST elevation</button><button type="button" data-answer="depression">ST depression</button><button type="button" data-answer="vt">Ventricular tachycardia (VT)</button><button type="button" data-answer="afib">Atrial fibrillation (AFib)</button>
+        </div>
+        <div id="signal-feedback" class="ecg-feedback" hidden><p id="signal-status" role="status" aria-live="polite"></p><p id="signal-explanation"></p><a id="signal-reference" href="https://www.ncbi.nlm.nih.gov/books/NBK459364/">Reference</a></div>
+        <div class="signal-actions"><span id="signal-progress">5 patterns</span><div><button id="signal-reset" type="button">Restart</button><button id="signal-next" type="button" hidden>Next ECG</button></div></div>
+        <p class="synthetic-label">Simplified synthetic illustrations, not diagnostic ECGs. Scroll the trace on small screens.</p>
+        <noscript><p class="noscript-note">Enable JavaScript to play Read the ECG.</p></noscript>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

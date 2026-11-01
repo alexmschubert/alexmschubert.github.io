@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://alexmschubert.github.io/sitemap.xml
